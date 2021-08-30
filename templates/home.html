@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+<!-- {% block heading %}
+first LoginPage
+{% endblock %} -->
+
+{% block content %}
+<div>
+    <nav class="navbar navbar-dark bg-success">
+        <a class="btn btn-success" href="/" float="margin-right">Home</a>
+        <a class="btn btn-success" href="/login" float="margin-right">Login</a>
+        <a class="btn btn-success" href="/register" float="margin-right">Register</a>
+    </nav>
+</div>
+
+
+<div style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;margin-top: 70px;font-size: 20px;">
+    
+    <!-- <h4 style="font-size: 200%;margin-left: 5%;">Home page</h4> -->
+    <img style="float:right;width:270px;height:200px;margin-right: 5%;"  src="{{ url_for('static', filename='rating.jpg')}}" alt="Search" class="image">
+    <p style="color:white;float: left; margin-left: 10%; font-size: 350%;">Welcome to Good Reads</p><br>
+    <!-- <img style="float:right;width:270px;height:200px;"  src="{{ url_for('static', filename='bookshelf.jpg')}}" alt="Search" class="image"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&display=swap" rel="stylesheet">
+    <p style="color:white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 150%;float: left;margin-left: 18%">"Please share your reviews of books"</p>
+    <p style="color:white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 150%;float: left;margin-left: 12%">"Good Book is a Medicine. But a bad Book is a poison."</p><br>
+    <!-- <p style="color:white;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 100%;float: left;">"But a bad Book is a poison."</p> -->
+</div>
+
+
+{% endblock %}
+

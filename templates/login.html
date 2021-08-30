@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+<!-- {% block heading %}
+first LoginPage
+{% endblock %} -->
+
+{% block content %}
+<div>
+    <nav class="navbar navbar-dark bg-success">
+        <!-- <h5 class="text-white h4">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/">Logout</a>
+        </h5> -->
+        <a class="btn btn-success" href="/" float="margin-right">Home</a>
+        <!-- <a class="btn btn-danger" href="/login" float="margin-right">Login</a> -->
+        <a class="btn btn-success" href="/register" float="margin-right">Register</a>
+        <!-- <a class="btn btn-danger" href="/logout" float="margin-right">Logout</a> -->
+    </nav>
+
+</div>
+
+<div>
+        <h2>{{error}}</h2>
+
+</div>
+
+<div style="text-align: center;margin-top: 10%;">
+    <form class="form-signin" action="{{url_for('login')}}" method="POST">
+        <h2 style="color:white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" class="form-signin-heading">Please Sign-in</h2><br>
+        <label for="inputUsername" class="sr-only">Email</label>
+        <input style="width: 290px; text-align: center;margin-left:39%;" type="email" id="inputUsername" name="email" class="form-control" placeholder="Email" required autofocus><br>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input style="width: 290px; text-align: center;margin-left:39%;" type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <br>
+        <button class="btn btn-success" type="submit">Login</button>
+    </form>
+    </div>
+
+
+{% endblock %}
+

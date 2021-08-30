@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+<!-- {% block heading %}
+first LoginPage
+{% endblock %} -->
+
+{% block content %}
+<div>
+  <nav class="navbar navbar-dark bg-dark">
+      <a class="btn btn-success" href="/" float="margin-right">Home</a>
+      <a class="btn btn-success" href="/bookshelf" float="margin-right">My-Shelf</a>
+      <!-- <a class="btn btn-success" href="/register" float="margin-right">Register</a> -->
+      <a class="btn btn-danger" href="/logout" float="margin-right">Logout</a>
+  </nav>
+</div>
+
+
+<h4 style="color:white;">Home PAGE</h4>
+<div style="text-align: center;margin-left: 15%;margin-right: 15%;">
+    <p style="color:white;">Welcome to the book store</p>
+</div>
+
+<div style="text-align: float;border: 1px solid;">
+    <h1 style="color:white;"> Title: {{book.title}}</h1>
+    <h5 style="color:white;"> Author : {{book.author}}  </h5>
+    <h5 style="color:white;"> ISBN:  {{book.isbn}}</h5>
+    <h5 style="color:white;"> Year: {{book.year}} </h5> 
+
+    <form method="post" action="{{url_for('get_book_details', isbn=book.isbn)}}">
+      {%if shelfbutton%}
+      <button class="btn btn-success" name="rsubmit">Add to Shelf</button>
+      {%else%}
+      <!-- <button class="btn btn-danger" type="submit" name="delete" >Delete</button> -->
+      <button class="btn btn-success" name="delete">Remove from Shelf</button>
+      <!-- <a href="/{{book.isbn}}"><button name="delete" >Remove from Shelf</button></a> -->
+      {%endif%}
+    </form>
+    <!-- <div>
+        <form action="{{url_for('bookshelf')}}">
+          <input  type="submit" value="Myshelf">
+        </form>
+      </div> -->
+</div>  
+<br>
+<br>     
+<div> 
+{%if reviewbutton%}
+<form action="{{url_for('reviewrating')}}", method="POST">
+  <!-- <div>
+    <input type="text" name="reviewdata" placeholder="Enter your review">
+    <input type="number" name="ratingdata" placeholder="rating">
+    <input style="background-color:MediumSeaGreen;" type="submit" value="Submit" name="reviewsubmit">
+  </div> -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" name ="reviewdata" placeholder="Review upto 200 words">
+    </div>
+    <div class="col">
+      <input type="number" class="form-control" name="ratingdata" placeholder="Rating">
+    </div>
+    <input style="background-color:MediumSeaGreen;" type="submit" value="Submit" name="reviewsubmit">
+  </div>
+</div>
+</form>
+{%endif%}
+</div>
+<div style="text-align: center;margin-left: 15%;margin-right: 15%;">
+<table class="table table-hover ">
+    <thead class="thead-dark">
+        
+        <th ><h5 >Isbn</h5></th>
+        <th ><h5 >Name</h5></th>
+        <th ><h5 >Review</h5></th>
+        <th ><h5 >Rating</h5></th>
+      <tr>
+        <br>
+        <br>
+      </tr>
+    </thead>
+    <tbody style="color:white;">
+      {% for r in reviews %}
+      <tr>
+          <td><h4>{{r.isbn}}</h4></td>
+          <td><h4>{{r.name}}</h4></td>
+          <td><h4>{{r.review}}</h4></td>
+          <td><h4>{{r.rating}}</h4></td>
+      </tr>  
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+

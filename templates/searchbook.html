@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+<!-- {% block heading %}
+first LoginPage
+{% endblock %} -->
+
+{% block content %}
+<div>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="btn btn-success" href="/bookshelf" >My-Shelf</a>
+        <a class="btn btn-danger" href="/logout" float="margin-right">Logout</a>
+    </nav>
+</div>
+
+
+<h4 style="color:white; margin-top: 3%;">Nothing to look! Search for book. </h4><br><br>
+<div style="text-align: center;margin-left: 15%;margin-right: 15%;">
+    <div>
+        <form class="example" action="/search"  method="POST">
+          <!-- <img style="float:left;width:270px;height:230px;"  src="{{ url_for('static', filename='booksearch.png')}}" alt="Search" class="image">
+          <img style="float:right;width:290px;height:230px;"  src="{{ url_for('static', filename='review.jpg')}}" alt="Search" class="image"> -->
+            <div style="margin-left: 29%;display: flex;">
+            <div><input style="width: 300px; margin: auto;" type="text" placeholder="Search.." name="search" class="form-control"required></div>
+            <div><button class="btn btn-success" style="margin-left:10%;" type="submit">Search</button></div></div>
+          </form>
+        <br>
+    </div>
+</div>
+<div>
+<div style="margin-left: 120px;margin-right: 120px;">
+  <div>
+    <!-- <form action="{{url_for('bookshelf')}}">
+      <button class="btn btn-primary" type="submit">My Shelf</button>
+    </form> -->
+  </div>
+    <div class ="container">
+        <table class="table table-hover">
+            <thead class="thead-dark" style="margin: auto;">
+                
+                <th ><h5 >ISBN</h5></th>
+                <th ><h5 >TITLE OF BOOK</h5></th>
+                <th ><h5 >AUTHOR</h5></th>
+                <th ><h5 >YEAR</h5></th>
+              <tr>
+                <br>
+              </tr>
+            </thead>
+            <tbody>
+              {% for book in books %}
+              <tr>
+                    <td style="color:white;"><a href="{{ url_for('get_book_details',isbn = book.isbn)}}" >{{book.isbn}}</a></td>
+                    <td style="color:white">{{book.title}}</td>
+                    <td style="color:white">{{book.author}}</td>
+                    <td style="color:white">{{book.year}}</td>
+              {% endfor %}
+            </tr>
+              
+            </tbody>
+          </table></div>
+        </div>
+        <br>
+        <br>
+        
+    
+</div>
+
+
+{% endblock %}
+
